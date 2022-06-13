@@ -1,6 +1,7 @@
 import typing;
 
 file_names = [
+    'customer',
 'employee_privileges',
 'employees',
 'inventory_transaction_types',
@@ -27,7 +28,10 @@ def create_model_file(model_name: str):
             select * from {{{{source('northwind', '{model_name}')}}}}
         )
 
-        select * from source
+        select 
+            *,
+            current_timestamp() as ingestion_timestamp
+        from source
         """
         f.write(file_content)
         

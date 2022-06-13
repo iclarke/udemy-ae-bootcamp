@@ -3,5 +3,8 @@
             select * from {{source('northwind', 'suppliers')}}
         )
 
-        select * from source
+        select 
+            *,
+            current_timestamp() as ingestion_timestamp
+        from source
         
