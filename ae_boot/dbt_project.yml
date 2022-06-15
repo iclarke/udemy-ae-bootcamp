@@ -40,3 +40,4 @@ models:
       +enabled: true
       +materialized: table
       +schema: dwh_northwind
+      dim_date: +materialized:view
